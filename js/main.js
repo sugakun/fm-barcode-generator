@@ -1,5 +1,6 @@
 $(function(){
   $("#datepicker").datepicker().datepicker("setDate", "today");
+  document.getElementById("barcode").textContent = enc_jan("197309197309");
 });
 
 var calc_checkdigit = function(data){
