@@ -16,7 +16,6 @@ var calc_checkdigit = function(data){
 }
 
 var calc_date100 = function(date){
-  console.log(date);
   var t = new Date(date)
   var s = Math.floor(t.getTime()/1000);
   var d = Math.floor(s/(60*60*24));
