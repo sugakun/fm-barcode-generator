@@ -1,20 +1,14 @@
 @font-face {
   font-variant-ligatures: discretionary-ligatures;
   font-family: 'ean13_font';
-  src: url('../fonts/ean13.woff')}
-
-.ean13_font {
-  font-variant-ligatures: discretionary-ligatures;
-  font-family: 'ean13_font';
-  font-size:30rem;
+  src: url('../fonts/ean13.woff');
 }
 
 input[type=number] {
-  -moz-appearance:textfield;
+  -moz-appearance: textfield;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -23,10 +17,12 @@ html {
   font-size: 62.5%;
 }
 
-body{
-  font-size: 4rem;
+.ean13_font {
+  font-variant-ligatures: discretionary-ligatures;
+  font-family: 'ean13_font';
+  font-size: 10rem;
 }
 
-select, input {
-font-size: 100%;
+body, select, input {
+  font-size: 1.2rem;
 }
