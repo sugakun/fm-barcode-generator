@@ -31,6 +31,7 @@ var enc_barcode = function(){
       alert("digits error.");
       return;
     }
+    return true;
   }
 
   var calc_date00 = function(date){
@@ -46,7 +47,7 @@ var enc_barcode = function(){
   var data8 = form.data.value;
   var hour = form.hour.value;;
 
-  error_chk();
+  if (!error_chk()) return
 
   var date00 = calc_date00(date);
 
