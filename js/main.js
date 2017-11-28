@@ -16,19 +16,6 @@ var calc_checkdigit = function(data){
 }
 
 var enc_barcode = function(){
-  var get_hour = function(data){
-    n = parseInt(data/1000)%10;
-    switch(n){
-      case 1:
-        return "18";
-      case 2:
-        return "02";
-      case 3:
-        return "11";
-    }
-    return form.hour.value;
-  }
-
   var error_chk = function(){
     if(date == ""){
       alert("date error.");
@@ -57,7 +44,7 @@ var enc_barcode = function(){
   var form = document.forms.info;
   var date = form.date.value;
   var data8 = form.data.value;
-  var hour = get_hour(data8);
+  var hour = form.hour.value;;
 
   error_chk();
 
