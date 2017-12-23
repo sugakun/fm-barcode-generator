@@ -26,3 +26,7 @@ html {
 body, select, input {
   font-size: 1.2rem;
 }
+
+#barcode > span {
+  display:list-item;
+}

@@ -1,6 +1,5 @@
 $(function(){
   $("#datepicker").datepicker().datepicker("setDate", "today");
-  document.getElementById("barcode").textContent = enc_jan("197309197309");
 });
 
 var calc_checkdigit = function(data){
@@ -17,20 +16,21 @@ var calc_checkdigit = function(data){
 
 var enc_barcode = function(){
   var error_chk = function(){
-    if(date == ""){
+    if(data.length == 8 && date == ""){
       alert("date error.");
       return;
     }
 
-    if(hour == ""){
+    if(data.length == 8 && hour == ""){
       alert("hour error.");
       return;
     }
 
-    if(data8.length != 8){
+    if(data.length != 8 && data.length != 12){
       alert("digits error.");
       return;
     }
+
     return true;
   }
 
@@ -44,16 +44,18 @@ var enc_barcode = function(){
 
   var form = document.forms.info;
   var date = form.date.value;
-  var data8 = form.data.value;
-  var hour = form.hour.value;;
+  var data = form.data.value;
+  var hour = form.hour.value;
 
   if (!error_chk()) return
 
-  var date00 = calc_date00(date);
-
-  var data12 = "" + data8 + date00 + hour;
+  var data12 = data.length == 8 ? "" + data + calc_date00(date) + hour : "" + data;
   var cd = calc_checkdigit(data12);
   var code = ""+data12+cd;
 
-  document.getElementById("barcode").textContent = enc_jan(code);
+  var cd3 = (cd%9).toString(3);
+  var fontColorSet = ["#000", "#00f", "#0f0"];
+  var backColorSet = ["#fff", "#f00", "#ff0"];
+  var barcode = "<span class='ean13_font' style='color:" + fontColorSet[cd3%10] + "; background-color:" + backColorSet[parseInt(cd3/10)] + ";'>" + enc_jan(code) + "<i class='material-icons' onClick='$(this).parent().remove()'>clear</i></span>";
+  $("#barcode").append(barcode);
 }
