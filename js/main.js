@@ -53,9 +53,9 @@ var enc_barcode = function(){
   var cd = calc_checkdigit(data12);
   var code = ""+data12+cd;
 
-  var cd3 = (cd%9).toString(3);
-  var fontColorSet = ["#000", "#00f", "#0f0"];
-  var backColorSet = ["#fff", "#f00", "#ff0"];
-  var barcode = "<span class='ean13_font' style='color:" + fontColorSet[cd3%10] + "; background-color:" + backColorSet[parseInt(cd3/10)] + ";'>" + enc_jan(code) + "<i class='material-icons' onClick='$(this).parent().remove()'>clear</i></span>";
+  var csn = (code%1000%16).toString(4);
+  var fontColorSet = ["#000", "#00f", "#0df", "#0f0"];
+  var backColorSet = ["#fff", "#f00", "#f90", "#ff0"];
+  var barcode = "<span class='ean13_font' style='color:" + fontColorSet[csn%10] + "; background-color:" + backColorSet[parseInt(csn/10)] + ";'>" + enc_jan(code) + "<i class='material-icons' onClick='$(this).parent().remove()'>clear</i></span>";
   $("#barcode").append(barcode);
 }
