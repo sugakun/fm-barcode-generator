@@ -30,3 +30,10 @@ body, select, input {
 #barcode > span {
   display:list-item;
 }
+#barcode > span:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4rem;
+  background-color: white;
+}
